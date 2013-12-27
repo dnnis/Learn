@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from portnine.com/Themes/AwesomeAdmin/reports.html by HTTrack Website Copier/3.x [XR&CO'2013], Tue, 17 Dec 2013 10:23:15 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap Admin</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+
+
+
+    <!-- For sample logo only-->
+    <!--Remove if you no longer need this font-->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Aguafina+Script">
+    <!--For sample logo only-->
+
+
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap3/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/FontAwesome/css/font-awesome.css">
+    <script src="lib/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="javascripts/site.js" type="text/javascript"></script>
+    <script src="lib/jquery.peity.min.js"></script>
+<script src="lib/flot/jquery.flot.js"></script>
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="lib/flot/excanvas.min.js"></script><![endif]-->
+<script type="text/javascript">
+$(function () {
+    /*
+    Colors 
+    #54a0f6
+    #a93018
+    #90c654
+    #A97518
+    #41B3DF
+    */
+    $(".small.bar.graph").peity("bar", { colours: ['#54a0f6'], height: 24, width: 92});
+    $(".small.line.graph").peity("line", {strokeColour: '#84bbf9', colour: 'rgba(132,187,249, .3)', height: 25, width: 92});
+
+    //Visits
+    var visitsData = [
+        {
+            label: "Visits",
+            data: [[1, 500], [2,873], [3,639], [4,939], [5,434], [6,523], [7,239], [8, 1093], [9, 803], [10,1038], [11, 520], [12, 907]],
+            color: '#84bbf9',
+        }
+    ];
+
+    var visitsOptions = {
+        grid: {
+            borderWidth: 0
+        },
+       xaxis: {
+         ticks: [
+           [1, "Jan"],
+           [2, "Feb"],
+           [3, "Mar"],
+           [4, "Apr"],
+           [5, "May"],
+           [6, "June"],
+           [7, "Jul"],
+           [8, "Aug"],
+           [9, "Sept"],
+           [10, "Oct"],
+           [11, "Nov"],
+           [12, "Dec"]
+         ]
+       },   
+        series: {
+            lines: { 
+                show: true,
+                fill: true,
+                fillColor: 'rgba(132,187,249, .3)'
+            },
+            points: { show: true }
+        },
+    };
+
+    $.plot($("#visits-chart"), visitsData, visitsOptions);
+    $(window).resize(function(){
+        $.plot($("#visits-chart"), visitsData, visitsOptions);
+    });
+    //-Visits
+
+    //Conversions
+    var conversionsData = [
+        {
+            data: [[1, 10], [2,19], [3,17], [4,21], [5,15], [6,17], [7,13], [8,5], [9,8], [10,12], [11,14], [12,8]],
+            color: '#84bbf9',
+        }
+    ];
+
+    var conversionsOptions = {
+        grid: {
+            borderWidth: 0,
+            //borderColor: '#ddd',
+        },
+       yaxis: {
+           tickLength: 0,
+         ticks: [
+           [0, "0"],
+           [5, "5"],
+           [10, "10"],
+           [15, "15"],
+           [20, "20"],
+         ]
+       },
+       xaxis: {
+         tickLength: 0,
+         ticks: [
+           [1, "A"],
+           [2, "B"],
+           [3, "C"],
+           [4, "D"],
+           [5, "E"],
+           [6, "F"],
+           [7, "G"],
+           [8, "H"],
+           [9, "H"],
+           [10, "I"],
+           [11, "J"],
+           [12, "K"],
+         ]
+       },   
+        series: {
+            bars: { 
+                show: true,
+                fill: true,
+                fillColor: 'rgba(132,187,249, .3)',
+                barWidth: .8,
+                align: "center"
+            },
+        },
+    };
+
+    $(window).resize(function(){
+        $.plot($("#conversions-chart"), conversionsData, conversionsOptions);
+    });
+    $.plot($("#conversions-chart"), conversionsData, conversionsOptions);
+    //-Conversions
+
+    //SEO
+    var seoData = [
+        {
+            //label: "",
+            data: [[1, 2050], [2,3300], [3,2600], [4,2937], [5,1900], [6,2400], [7,1500], [8, 2900]],
+            color: '#a93018',
+        }
+    ];
+
+    var seoOptions = {
+        grid: {
+            borderWidth: 0
+        },
+       xaxis: {
+         ticks: [
+           [1, "Jan"],
+           [2, "Feb"],
+           [3, "March"],
+           [4, "Apr"],
+           [5, "May"],
+           [6, "June"],
+           [7, "July"],
+           [8, "Aug"],
+           [9, "Sept"],
+           [10, "Oct"],
+           [11, "Nov"],
+           [12, "Dec"]
+         ]
+       },   
+        series: {
+            lines: { 
+                show: true,
+                //fill: true,
+                //fillColor: 'rgba(132,187,249, .3)'
+            },
+            points: { show: true }
+        },
+    };
+
+    $.plot($("#seo-chart"), seoData, seoOptions);
+    $(window).resize(function(){
+        $.plot($("#seo-chart"), seoData, seoOptions);
+    });
+    //-seo
+});
+</script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
+
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://portnine.com/Themes/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.html">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.html">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.html">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.html">
+  </head>
+
+  <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
+  <!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
+  <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
+  <!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><!--> 
+  <body class=""> 
+  <!--<![endif]-->
+    
+<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-reorder"></span>
+          </button>
+          <a class="navbar-brand" href="index-2.html">Awesome.</a>
+        </div>
+        
+        <div class="hidden-xs">
+                <ul class="nav navbar-nav pull-right">
+                    
+                    <li class="hidden-phone"><a href="#" role="button">Settings</a></li>
+                    <li id="fat-menu" class="dropdown">
+                        <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon-user"></i> Jack Smith
+                            <i class="icon-caret-down"></i>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="#">My Account</a></li>
+                            <li class="divider"></li>
+                            <li><a tabindex="-1" class="visible-phone" href="#">Settings</a></li>
+                            <li class="divider visible-phone"></li>
+                            <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+        </div><!--/.navbar-collapse -->
+    </div>
+    </div>
+
+
+    <div class="navbar-collapse collapse">
+        <div id="main-menu">
+            
+
+            <div id="phone-navigation" class="visible-xs">
+                <ul id="dashboard-menu" class="nav nav-list">
+                    
+                    <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Dashboard" href="index-2.html"><i class="icon-home"></i> <span class="caption">Dashboard</span></a></li>
+                    
+                    
+                    <li class="active "><a rel="tooltip" data-placement="right" data-original-title="Reports" href="reports.html"><i class="icon-bar-chart"></i> <span class="caption">Reports</span></a></li>
+                    
+                    
+                    <li class=" "><a rel="tooltip" data-placement="right" data-original-title="UI Features" href="components.html"><i class="icon-briefcase"></i> <span class="caption">UI Features</span></a></li>
+                    
+                    
+                    <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Pricing" href="pricing.html"><i class="icon-magic"></i> <span class="caption">Pricing</span></a></li>
+                    
+                    
+                    <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Media" href="media.html"><i class="icon-film"></i> <span class="caption">Media</span></a></li>
+                    
+                    
+                    <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Blog" href="blog.html"><i class="icon-beaker"></i> <span class="caption">Blog</span></a></li>
+                    
+                    
+                    <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Blog Entry" href="blog-item.html"><i class="icon-coffee"></i> <span class="caption">Blog Entry</span></a></li>
+                    
+                    
+                    <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Help" href="help.html"><i class="icon-question-sign"></i> <span class="caption">Help</span></a></li>
+                    
+                    
+                    <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Faq" href="faq.html"><i class="icon-book"></i> <span class="caption">Faq</span></a></li>
+                    
+                    
+                    <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Calendar" href="calendar.html"><i class="icon-calendar"></i> <span class="caption">Calendar</span></a></li>
+                    
+                    
+                    <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Forms" href="forms.html"><i class="icon-tasks"></i> <span class="caption">Forms</span></a></li>
+                    
+                    
+                    <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Tables" href="tables.html"><i class="icon-table"></i> <span class="caption">Tables</span></a></li>
+                    
+                    
+                    
+                    <li class=" theme-mobile-hack hidden-xs"><a rel="tooltip" data-placement="right" data-original-title="Mobile" href="mobile.html"><i class="icon-comment-alt"></i> <span class="caption">Mobile</span></a></li>
+                    
+                    <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Icons" href="icons.html"><i class="icon-heart"></i> <span class="caption">Icons</span></a></li>
+                    
+                    
+                </ul>
+            </div>
+
+            <ul class="nav nav-tabs hidden-xs">
+                <li ><a href="index-2.html"><i class="icon-dashboard"></i> <span>Dashboard</span></a></li>
+                <li class="active"><a href="reports.html" ><i class="icon-bar-chart"></i> <span>Reports</span></a></li>
+                <li ><a href="components.html" ><i class="icon-cogs"></i> <span>Components</span></a></li>
+                <li ><a href="pricing.html"><i class="icon-magic"></i> <span>Pricing</span></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i> Settings <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="sign-in.html"><span>Sign-in Page</span></a></li>
+                        <li><a href="sign-up.html"><span>Sign-up Page</span></a></li>
+                        <li><a href="reset-password.html"><span>Forgot Password Page</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <div id="sidebar-nav" class="hidden-xs">
+        
+        <ul id="dashboard-menu" class="nav nav-list">
+            
+            <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Dashboard" href="index-2.html"><i class="icon-home"></i> <span class="caption">Dashboard</span></a></li>
+            
+            
+            <li class="active "><a rel="tooltip" data-placement="right" data-original-title="Reports" href="reports.html"><i class="icon-bar-chart"></i> <span class="caption">Reports</span></a></li>
+            
+            
+            <li class=" "><a rel="tooltip" data-placement="right" data-original-title="UI Features" href="components.html"><i class="icon-briefcase"></i> <span class="caption">UI Features</span></a></li>
+            
+            
+            <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Pricing" href="pricing.html"><i class="icon-magic"></i> <span class="caption">Pricing</span></a></li>
+            
+            
+            <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Media" href="media.html"><i class="icon-film"></i> <span class="caption">Media</span></a></li>
+            
+            
+            <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Blog" href="blog.html"><i class="icon-beaker"></i> <span class="caption">Blog</span></a></li>
+            
+            
+            <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Blog Entry" href="blog-item.html"><i class="icon-coffee"></i> <span class="caption">Blog Entry</span></a></li>
+            
+            
+            <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Help" href="help.html"><i class="icon-question-sign"></i> <span class="caption">Help</span></a></li>
+            
+            
+            <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Faq" href="faq.html"><i class="icon-book"></i> <span class="caption">Faq</span></a></li>
+            
+            
+            <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Calendar" href="calendar.html"><i class="icon-calendar"></i> <span class="caption">Calendar</span></a></li>
+            
+            
+            <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Forms" href="forms.html"><i class="icon-tasks"></i> <span class="caption">Forms</span></a></li>
+            
+            
+            <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Tables" href="tables.html"><i class="icon-table"></i> <span class="caption">Tables</span></a></li>
+            
+            
+            
+            <li class=" theme-mobile-hack"><a rel="tooltip" data-placement="right" data-original-title="Mobile" href="mobile.html"><i class="icon-comment-alt"></i> <span class="caption">Mobile</span></a></li>
+            
+            <li class=" "><a rel="tooltip" data-placement="right" data-original-title="Icons" href="icons.html"><i class="icon-heart"></i> <span class="caption">Icons</span></a></li>
+            
+            
+        </ul>
+    </div>
+    
+    <div class="content">
+        
+
+<div class="row">
+    <div class="col-md-8">
+
+
+            <h2>Traffic Overview</h2>
+            <div id="visits-chart" class="chart" style="width: 100%; max-width:600px;height:300px;margin:0px auto 1em auto;">
+            </div>
+
+            <h2>Stats</h2>
+            <div class="stats">
+                <div class="stat">
+                    <p class="main-detail text-warning">6,233</p>
+                    <p class="info">Visits</p>
+                </div>
+                <div class="stat">
+                    <p class="main-detail text-warning">8:13</p>
+                    <p class="info">Visit Duration</p>
+                </div>
+                <div class="stat">
+                    <p class="main-detail text-warning">9.2%</p>
+                    <p class="info">Bounce Rate</p>
+                </div>
+                <div class="stat">
+                    <p class="main-detail text-warning">77.6%</p>
+                    <p class="info">% New Visits</p>
+                </div>
+                <div class="stat">
+                    <p class="main-detail text-warning">3.05</p>
+                    <p class="info">Pages per Visit</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Goal for Today</h2>
+                    <ul class="list-unstyled">
+                        <li>4,500 Impressions <span class="pull-right strong">55%</span>
+                            <div class="progress progress-important">
+                                <div class="bar" style="width: 55%;"></div>
+                            </div>
+                        </li>
+                        <li>3,400 Unique Visitors<span class="pull-right strong">40%</span>
+                            <div class="progress progress-success">
+                                <div class="bar" style="width: 40%;"></div>
+                            </div>
+                        </li>
+                        <li>1,200 Page Views<span class="pull-right strong">80%</span>
+                            <div class="progress progress-warning">
+                                <div class="bar" style="width: 80%;"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h2>Conversion Results</h2>
+                    <div id="conversions-chart" style="width:100%;height:200px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+            <div class="col-md-12">
+                <h2>Top 5 Users</h2>
+                <div class="well widget" style="display: none;">
+                    <form class="form-inline" style="margin-bottom: 0px;">
+                        <input class="input-xlarge" placeholder="Search All Users..." type="text">
+                        <button class="btn" type="button"><i class="icon-search"></i> Go</button>
+                    </form>
+                </div>
+                <table class="table table-first-column-check">
+                  <thead>
+                    <tr>
+                      <th><input type="checkbox"></th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Username</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="checkbox"></td>
+                      <td>Mark</td>
+                      <td>Tompson</td>
+                      <td>the_mark7</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox"></td>
+                      <td>Ashley</td>
+                      <td>Jacobs</td>
+                      <td>ash11927</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox"></td>
+                      <td>Audrey</td>
+                      <td>Ann</td>
+                      <td>audann84</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox"></td>
+                      <td>Aaron</td>
+                      <td>Butler</td>
+                      <td>aaron_butler</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox"></td>
+                      <td>Chris</td>
+                      <td>Albert</td>
+                      <td>cab79</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+        <h2>Stats and a Graph</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <ul class="cards list-group">
+                    <li class="list-group-item">Total<span class="pull-right label label-success">9,349</span></li>
+                    <li class="list-group-item">Organic<span class="pull-right label label-warning">2,215</span></li>
+                    <li class="list-group-item">Paid<span class="pull-right label label-info">5,397</span></li>
+                    <li class="list-group-item">Affiliate<span class="pull-right label">2,137</span></li>
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <div id="seo-chart" style="width: 100%; height:300px;float:right;"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4 sidebar">
+        <div class="widget">
+            <h2>Campaigns</h2>
+            <ul class="cards list-group">
+                <li class="list-group-item">
+                    <p class="title" style=" line-height: 1em; margin-top: 0em">Bounce Rate</p>
+                    <p class="pull-right text-error strong">58%</p>
+                    <span class="small line graph">5,3,9,6,5,9,7,3,5,2</span>
+                    <p class="info">Site: 46.65% (-1.2%)</p>
+                </li>
+                <li class="list-group-item">
+                    <p class="title" style=" line-height: 1em; margin-top: 0em">Unique Visitors</p>
+                    <p class="pull-right text-info strong">1,307</p>
+                    <span class="small line graph">3,4,5,6,5,6,5,4,5,2,4,5,6,2,3,2</span>
+                    <p class="info">Site: 11,382 (1.5%)</p>
+                </li>
+                <li class="list-group-item">
+                    <p class="title" style=" line-height: 1em; margin-top: 0em">Pages Per Visit</p>
+                    <p class="pull-right text-warning strong">3.27</p>
+                    <span class="small line graph">4,3,4,5,7,9,3,7,5,2,4,3,3,6,3,7</span>
+                    <p class="info">Site: 2.3 (107.02%)</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="widget">
+            <h2>System Status</h2>
+            <ul class="cards compact list-group">
+                <li class="list-group-item">
+                    <p class="title">Software <span class="label label-success pull-down pull-right">Good</span></p>
+                    <p class="info">Business, CRM, Browser</p>
+                </li>
+                <li class="list-group-item">
+                    <p class="title">Servers <span class="label label-info pull-down pull-right">Slow</span></p>
+                    <p class="info">Cloud, Local, Mail</p>
+                </li>
+                <li class="list-group-item">
+                    <p class="title">Network <span class="label label-important pull-down pull-right">Poor</span></p>
+                    <p class="info">Ports, lines, cables</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="widget">
+            <h2>Campaigns</h2>
+            <ul class="cards list-group">
+                <li class="list-group-item">
+                    <p class="title" style=" line-height: 1em; margin-top: 0em">Bounce Rate</p>
+                    <div class="chart pull-right">
+                        <span class="small bar graph">3,3,5,4,6,7,6,2,3,2,4</span>
+                    </div>
+                    <p class="text-warning" style="font-size: 1.75em; line-height: 1em; margin-bottom: 0px;"><i class="icon-arrow-down"></i> 26%</p>
+                </li>
+                <li class="list-group-item">
+                    <p class="title" style=" line-height: 1em; margin-top: 0em">Time on Page</p>
+                    <div class="chart pull-right">
+                        <span class="small bar graph">5,3,9,6,5,9,7,3,5,2,4</span>
+                    </div>
+                    <p class="text-info" style="font-size: 1.75em; line-height: 1em; margin-bottom: 0px;"><i class="icon-arrow-up"></i> 26%</p>
+                </li>
+                <li class="list-group-item">
+                    <p class="title" style=" line-height: 1em; margin-top: 0em">Views Per Day</p>
+                    <div class="chart pull-right">
+                        <span class="small bar graph">4,4,9,6,5,4,5,6,5,2,4</span>
+                    </div>
+                    <p class="text-important" style="font-size: 1.75em; line-height: 1em; margin-bottom: 0px;"><i class="icon-arrow-down"></i> 26%</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+        
+        <footer>
+            <hr>
+            <p class="pull-right">Design by <a href="http://www.portnine.com/" target="_blank">Portnine</a></p>
+            <p>&copy; 2013 <a href="#">Your Company</a></p>
+        </footer>
+        
+    </div>
+    
+    <script src="lib/bootstrap3/dist/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip({animation:false});
+        $(function() {
+            $('.demo-cancel-click').click(function(){return false;});
+        });
+    </script>
+    
+  </body>
+
+<!-- Mirrored from portnine.com/Themes/AwesomeAdmin/reports.html by HTTrack Website Copier/3.x [XR&CO'2013], Tue, 17 Dec 2013 10:23:18 GMT -->
+</html>
+
+

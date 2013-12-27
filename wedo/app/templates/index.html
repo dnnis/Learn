@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login page - 毅强TODO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Responsive HTML template for Your company">
+    <meta name="author" content="Oskar Żabik (oskar.zabik@gmail.com)">
+
+    <!-- Le styles -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/staticcss/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/css/typica-login.css">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le favicon -->
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+
+      </div>
+    </div>
+
+    <div class="container">
+
+        <div id="login-wraper">
+            <form class="form login-form">
+            {{form.hidden_tag()}}
+                <legend>登录到 <span class="blue">毅强TODO</span></legend>
+            
+                <div class="body">
+                    <label>用户名</label>
+                    {{form.username}}
+                    
+                    <label>密码</label>
+                    {{form.password}}
+                </div>
+            
+                <div class="footer">
+                    <label class="checkbox inline">
+                        <p>{{remeber_me}} 记住登录</p>
+                    </label>
+                                
+                    <button type="submit" class="btn btn-success">登录</button>
+                </div>
+            
+            </form>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/backstretch.min.js"></script>
+    <script src="/static/js/typica-login.js"></script>
+
+  </body>
+
+</html>
