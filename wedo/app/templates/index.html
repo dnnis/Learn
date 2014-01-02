@@ -10,7 +10,7 @@
 
     <!-- Le styles -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/staticcss/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="/static/css/typica-login.css">
 
@@ -34,24 +34,39 @@
     <div class="container">
 
         <div id="login-wraper">
-            <form class="form login-form">
+            <form class="form login-form" method="post" action="">
             {{form.hidden_tag()}}
                 <legend>登录到 <span class="blue">毅强TODO</span></legend>
             
                 <div class="body">
                     <label>用户名</label>
                     {{form.username}}
-                    
+                    {% for error in form.errors.username%}
+                    <p style="color: red;">[{{error}}]</p>
+                    {% endfor %}
                     <label>密码</label>
                     {{form.userpass}}
-                </div>
-            
+                    {% for error in form.errors.userpass %}
+                    <p style="color: red;">[{{error}}]</p>
+                    {% endfor %}
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <div class='flash-container'>
+                    {% for message in messages %}
+        
+                    <span>{{ message }} </span>
+                    {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                </div>            
                 <div class="footer">
                     <label class="checkbox inline">
-                        <p>{{form.remeber_me}} 记住登录</p>
+                        {{form.remeber_me}} 记住登录
                     </label>
                                 
                     <button type="submit" class="btn btn-success">登录</button>
+
                 </div>
             
             </form>
@@ -68,7 +83,7 @@
     <script src="/static/js/jquery.js"></script>
     <script src="/static/js/bootstrap.js"></script>
     <script src="/static/js/backstretch.min.js"></script>
-    <script src="/static/js/typica-login.js"></script>
+
 
   </body>
 
