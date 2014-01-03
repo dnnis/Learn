@@ -45,6 +45,8 @@ class Todo(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     content = db.Column(db.String(1200))
+    post_user_id=db.Column(db.Integer, db.ForeignKey('user.id'))
+    post_user=db.relationship('User',backref=db.backref('postuser', lazy='dynamic'),foreign_keys="[Todo.post_user_id]")
     posted_on = db.Column(db.DateTime )
     todo_begin = db.Column(db.DateTime )
     todo_end = db.Column(db.DateTime )
@@ -52,15 +54,16 @@ class Todo(db.Model):
     pruduct_id = db.Column(db.Integer, db.ForeignKey('product.id'))
     assign_group=db.relationship('Wgroup',backref=db.backref('assign', lazy='dynamic'))
     assign_group_id=db.Column(db.Integer, db.ForeignKey('wgroup.id'))
-    do_user=db.relationship('User',backref=db.backref('douser', lazy='dynamic'))
     do_user_id=db.Column(db.Integer, db.ForeignKey('user.id'))
-    Product = db.relationship('Product',backref=db.backref('product', lazy='dynamic'))
+    do_user=db.relationship('User',backref=db.backref('douser', lazy='dynamic'),foreign_keys="[Todo.do_user_id]")
     
-    def __init__(self,title,content,Product,assign_group,todo_begin=None,todo_end=None,do_user=None,status=0,posted_on=None):
+    Product = db.relationship('Product',backref=db.backref('product', lazy='dynamic'))
+    def __init__(self,title,content,Product,assign_group,post_user,todo_begin=None,todo_end=None,do_user=None,status=0,posted_on=None):
         default_time=datetime.utcnow()
         self.title=title
         self.content=content
         self.Product=Product
+        self.post_user=post_user
         if todo_begin is None:
             todo_begin=default_time
         if todo_end is None:
