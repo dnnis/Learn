@@ -22,7 +22,7 @@ class User(db.Model):
         self.groupname=groupname
         self.password=md5(password).hexdigest()
         if last_seen is None:
-            last_seen=datetime.utcnow()
+            last_seen=datetime.now()
         self.last_seen=last_seen
     def is_authenticated(self):
         return True
@@ -59,7 +59,7 @@ class Todo(db.Model):
     
     Product = db.relationship('Product',backref=db.backref('product', lazy='dynamic'))
     def __init__(self,title,content,Product,assign_group,post_user,todo_begin=None,todo_end=None,do_user=None,status=0,posted_on=None):
-        default_time=datetime.utcnow()
+        default_time=datetime.now()
         self.title=title
         self.content=content
         self.Product=Product

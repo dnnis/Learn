@@ -1,0 +1,86 @@
+{%extends '/Dash/base.html'%}
+{%block head%}
+<script type="text/javascript" src="/static/ckeditor/ckeditor.js"></script>
+{%endblock%}
+{%block home%}
+<div class="content">
+         <form class="form-horizontal" action="{{url_for('create_todo')}}" method="post" name="edit">
+ {{form.hidden_tag()}}
+		
+
+                <div class="form-group">
+                    <!-- Text input-->
+                    <label class="control-label col-md-1">任务</label>
+                    <div class="controls col-md-10">
+						{{form.title(class='form-control')}}
+					{% for error in form.errors.title %}
+    <span style="color: red;">[{{error}}]</span>
+{% endfor %}
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label class="col-md-1 control-label"> 选择产品</label>
+                    <div class="col-md-3">
+                        {{form.product(class='form-control')}}
+					{% for error in form.errors.product %}
+					<span style="color: red;">[{{error}}]</span>
+					{% endfor %}
+                    </div>
+					<label class="col-md-1 control-label">状态</label>
+                    <div class="controls col-md-3">
+					{{form.status(class='form-control')}}
+					{% for error in form.errors.status %}
+					<span style="color: red;">[{{error}}]</span>
+					{% endfor %}
+                    </div>
+					<label class="col-md-1 control-label">任务分配</label>
+                    <div class="controls col-md-3">
+					{{form.assign_group(class='form-control')}}
+					{% for error in form.errors.assign_group %}
+					<span style="color: red;">[{{error}}]</span>
+					{% endfor %}
+                    </div>
+                </div>
+				<div class="form-group">
+				<label class="col-md-1 control-label">开始时间:</label>		
+                 <div class="input-append date form_datetime col-md-3">
+				 {{form.todo_begin(size="16",type="text",class='form-control')}}
+				<span class="add-on"><i class="icon-th"></i></span>
+				</div>
+				<label class="col-md-1 control-label">结束时间:</label>	
+				<div class="col-md-3">		
+                 <div class="input-append date form_datetime">
+				 {{form.todo_end(size="16",type="text",class='form-control')}}
+				<span class="add-on"><i class="icon-th"></i></span>
+				</div>
+				</div>
+				</div>
+                <div class="form-group">
+                    <!-- Textarea -->
+                    <label class="control-label">操作步骤:</label>
+					{{form.content()|safe}}
+					
+					{% for error in form.errors.content %}
+					<span style="color: red;">[{{error}}]</span>
+					{% endfor %}
+					<!--   -->
+
+				</div>
+				
+			<div class="control-group">
+            <div class="controls col-sm-offset-4">
+                <input  type="submit" name='btn' class="btn btn-primary btn-lg " value='保存'>
+				<input  type="submit" name='btn' class="btn btn-primary btn-lg col-sm-offset-1" value='取消'>
+            </div>
+        </div>
+
+            </form>
+
+
+</div>
+<script type="text/javascript">
+    $(function(){
+        CKEDITOR.replace( 'content' );
+ });
+</script>
+{%endblock%}

@@ -1,0 +1,82 @@
+{%extents 'base.html'%}
+{% block home%}
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">创建新任务</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal"  method="post" action="">
+		<div class="form-group">
+                    <!-- Select Basic -->
+                    <label class="control-label">选择产品</label>
+                    <div class="controls">
+                        {{form.product(class='form-control')|safe}}
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <!-- Text input-->
+                    <label class="control-label">标题</label>
+                    <div class="controls">
+						{{form.title(class='form-control')|safe}}
+                    </div>
+                </div>
+				<div class="form-group">
+                <label  class="col-md-2 control-label">期望开始时间</label>
+                <div class="input-group date form_datetime col-md-10"  data-link-field="dtp_input1">
+					{{form.todo_begin(class="form-control",size="16")|safe}}
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+            </div>
+							<div class="form-group">
+                <label  class="col-md-2 control-label">期望结束时间</label>
+                <div class="input-group date form_datetime col-md-10"  data-link-field="dtp_input1">
+					{{form.todo_end(class="form-control",size="16")|safe}}
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+            </div>                
+                <div class="form-group">
+                    <!-- Textarea -->
+                    <label class="control-label">任务</label>
+                    <div class="controls">
+                        <div class="textarea">
+						{{form.content(class="form-control",rows="6")|safe}}
+                        </div>
+                    </div>
+                </div>
+				<div class="form-group">
+                    <!-- Select Basic -->
+                    <label class="control-label">任务分配</label>
+                    <div class="controls">
+					    {{form.assign_group(class='form-control')|safe}}
+                    </div>
+                </div>
+				<div class="form-group">
+                    <!-- Select Basic -->
+                    <label class="control-label">状态</label>
+                    <div class="controls">
+					    {{form.status(class='form-control')|safe}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="controls">
+                    <button class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type='submit' class="btn btn-success" >提交</button>
+                        
+                    </div>
+                </div>
+
+            </form>
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{%endblock%}

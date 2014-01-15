@@ -34,41 +34,38 @@
     <div class="container">
 
         <div id="login-wraper">
-            <form class="form login-form" method="post" action="">
+            <form class="form-horizontal" method="post" action="">
             {{form.hidden_tag()}}
                 <legend>登录到 <span class="blue">毅强TODO</span></legend>
             
-                <div class="body">
-                    <label>用户名</label>
-                    {{form.username}}
-                    {% for error in form.errors.username%}
-                    <p style="color: red;">[{{error}}]</p>
-                    {% endfor %}
-                    <label>密码</label>
-                    {{form.userpass}}
-                    {% for error in form.errors.userpass %}
-                    <p style="color: red;">[{{error}}]</p>
-                    {% endfor %}
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">用户名</label>
+                    <div class="col-sm-9">
+                    {{form.username(class="form-control",placeholder="请输入用户名")}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">密&nbsp;&nbsp;&nbsp;码</label>
+                    <div class="col-sm-9">
+                    {{form.userpass(class="form-control",placeholder="请输入密码")}}
+                    </div>
+                </div>
+                    
                     {% with messages = get_flashed_messages() %}
                     {% if messages %}
-                    <div class='flash-container'>
-                    {% for message in messages %}
-        
+                    {% for message in messages %}        
                     <span>{{ message }} </span>
                     {% endfor %}
-                    </div>
                     {% endif %}
-                    {% endwith %}
-                </div>            
-                <div class="footer">
-                    <label class="checkbox inline">
-                        {{form.remeber_me}} 记住登录
-                    </label>
-                                
-                    <button type="submit" class="btn btn-success">登录</button>
+                    {% endwith %}          
 
+                <div class="checkbox">
+                    <label class='col-sm-4 col-sm-offset-1'>
+                        {{form.remeber_me}}记住登录
+                    </label>
+                    <button type="submit" class="btn btn-success">登录</button>
                 </div>
-            
+                    
             </form>
         </div>
 
