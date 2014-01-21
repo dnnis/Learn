@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <title>Wing IDE 5.x 注册机</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    
+  </head>
+  <body>
+  <form class="form-horizontal" method='POST' role="form">
+  {{form.hidden_tag()}}
+  <div class="form-group">
+    <label for="LicenseNumber" class="col-sm-2 control-label">LicenseNumber</label>
+    <div class="col-sm-6">
+      {{form.LicenseNumber(class='form-control',placeholder='请输入licenseNumber')}}
+      <span class="help-block">LicenseNumber类似 CN123-12345-12345-12345,可以直接复制本LicenseNumber</span>
+      
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="RequestCode" class="col-sm-2 control-label">RequestCode</label>
+    <div class="col-sm-6">
+      {{form.RequestCode(class='form-control',placeholder='请输入RequestCode')}}
+      <span class="help-block">RequestCode示例: RW51D-V1588-WJGNH-9QQGV 请根据实际内容输入</span>
+	  
+    </div>
+  </div>
+    <div class="form-group">
+    <label for="RequestCode" class="col-sm-2 control-label">RequestCode</label>
+    <div class="col-sm-6">
+      {{form.ActivationCode(class='form-control',placeholder='这里会显示生成的注册码',disabled='disabled')}}
+      
+    </div>
+  </div>
+  {% with messages = get_flashed_messages()%}
+  {% if messages %}
+  {% for message in messages %}
+  <div class='alert alert-info'>
+  <button type='button' class='close' data-dismiss='alert'>&times;</button>
+   {{ message }}
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  <div class="form-group ">
+    <div class="col-sm-offset-4">
+      <button type="submit" class="btn btn-success">生成注册码</button>
+    </div>
+  </div>
+</form>
+  <script src="http://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  
+  </body>
+  
+  </html>
